@@ -1,48 +1,26 @@
 <template>
   <div class="contianer">
-    <CustomHeader title="Task Tracker" />
-    <TaskList :tasks="tasks" />
+    <CustomHeader @btn-click="toggleAddTask" title="Task Tracker" />
+    <router-view :showAddTask="showAddTask" />
+    <CustomFooter />
   </div>
 </template>
 <script>
 import CustomHeader from './components/CustomHeader.vue'
-import TaskList from './components/TaskList.vue'
+import CustomFooter from './components/CustomFooter.vue'
 
 export default {
   name: 'App',
-  components: { CustomHeader, TaskList },
+  components: { CustomHeader, CustomFooter },
   data() {
     return {
-      tasks: []
+      showAddTask: false
     }
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: 'Learn Vue',
-        day: 'March 3rd at 1:30pm',
-        reminder: true
-      },
-      {
-        id: 2,
-        text: 'Revise Golang',
-        day: 'March 4th at 1:30pm',
-        reminder: true
-      },
-      {
-        id: 3,
-        text: 'Do Project',
-        day: 'March 5th at 1:30pm',
-        reminder: true
-      },
-      {
-        id: 4,
-        text: 'Dance',
-        day: 'March 5th at 1:30pm',
-        reminder: false
-      }
-    ]
+  methods: {
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    }
   }
 }
 </script>

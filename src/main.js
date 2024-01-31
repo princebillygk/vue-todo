@@ -9,5 +9,6 @@ library.add(fab, far, fas)
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import { router } from './router'
 
-createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+createApp(App).use(router).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
